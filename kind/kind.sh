@@ -18,12 +18,13 @@
 
 if which bwv &>/dev/null; then
   # this is custom for martin
-  export GITHUB_TOKEN=$(bwv "development/github.com?field=full-access-token" | jq -r .value);
+  export GITHUB_TOKEN=$(bwv "development/github.com?fields=full-access-token" | jq -r .value);
   export AWS_PROFILE=honeybadgermc
 fi
 
 if [ -z "$GITHUB_TOKEN" ]; then
   echo GITHUB_TOKEN must be set in your environment
+
   exit 1
 fi
 
